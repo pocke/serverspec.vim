@@ -2,7 +2,7 @@ require 'json'
 require 'active_support'
 require 'active_support/core_ext'
 
-info = JSON.parse(File.read(File.expand_path('../../plugin/serverspec_info.json', __FILE__)))
+info = JSON.parse(File.read(File.expand_path('../../autoload/serverspec_info.json', __FILE__)))
 
 
 # @param [String] name
