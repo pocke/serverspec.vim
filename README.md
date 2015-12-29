@@ -66,6 +66,11 @@ or
 :ServerspecDoc <name>
 ```
 
+Blog
+-------
+
+- [Serverspec を書きやすくする Vim プラグインをつくった - pockestrap](http://pocke.hatenablog.com/entry/2015/12/26/113719) (Japanese)
+
 Development
 -----------
 
