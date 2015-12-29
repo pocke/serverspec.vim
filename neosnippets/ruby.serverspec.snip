@@ -444,6 +444,10 @@ snippet file_sha256sum
 options head
   its(:sha256sum) { should ${1:be} ${0} }
 
+snippet file_link_target
+options head
+  its(:link_target) { should ${1:be} ${0} }
+
 snippet file_mtime
 options head
   its(:mtime) { should ${1:be} ${0} }
