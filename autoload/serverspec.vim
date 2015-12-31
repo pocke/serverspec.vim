@@ -5,9 +5,8 @@ if s:ruby_available
   execute 'rubyfile '.s:self_path.'.rb'
 
   ruby ServerspecVim.doc_candidates
-	let s:doc_candidates = s:ret
-	unlet s:ret
-
+  let s:doc_candidates = s:ret
+  unlet s:ret
 else
   let s:doc_candidates = []
 endif
@@ -16,6 +15,11 @@ endif
 function! serverspec#doc(...) abort
   if a:0 >= 1
     let anchor = '#' . a:1
+  elseif s:ruby_available
+
+    execute "ruby ServerspecVim.resource_name_by_line(" . bufnr('%') . ", " . line('.') . ")"
+    let anchor = s:ret
+    unlet s:ret
   else
     let anchor = ''
   endif

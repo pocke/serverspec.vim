@@ -7,11 +7,13 @@ module ServerspecVim
   class << self
     # ServerspecDoc command の補完候補
     def doc_candidates
-      return_to_vim 's:ret', Info.keys.join("\n")
+      return_to_vim Info.keys.join("\n")
     end
 
+    # @param [Integer] bufnr バッファ番号
     # @param [Integer] line 行番号
-    def resource_name_by_line(line)
+    def resource_name_by_line(bufnr, line)
+      return_to_vim ServerspecVim::Rippy.new(code(bufnr)).resource_name(line) || ""
     end
 
     private
@@ -19,8 +21,12 @@ module ServerspecVim
     # The MIT License (MIT)
     #
     # Copyright (c) 2014 todesking
-    def return_to_vim(var_name, content)
-      ::Vim.command "let #{var_name} = #{content.inspect}"
+    def return_to_vim(content)
+      ::Vim.command "let s:ret = #{content.inspect}"
+    end
+
+    def code(bufnr)
+      ::Vim.evaluate("getbufline(#{bufnr}, 1, '$')").join("\n")
     end
   end
 end
