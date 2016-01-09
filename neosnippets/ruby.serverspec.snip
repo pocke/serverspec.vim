@@ -266,6 +266,12 @@ options head
     ${0}
   end
 
+snippet hadoop_config
+options head
+  describe hadoop_config('${1:#:NAME}') do
+    ${0}
+  end
+
 
 # Matcher snippets
 
@@ -309,13 +315,13 @@ snippet command_be
 options head
   it { should be(${0:#:object}) }
 
-snippet command_stdout
-options head
-  its(:stdout) { should ${1:be} ${0} }
-
 snippet command_stderr
 options head
   its(:stderr) { should ${1:be} ${0} }
+
+snippet command_stdout
+options head
+  its(:stdout) { should ${1:be} ${0} }
 
 snippet command_exit_status
 options head
@@ -330,30 +336,30 @@ snippet cron_be_has_entry
 options head
   it { should be_has_entry(${0:#:user}, ${1:#:entry}) }
 
-snippet cron_table
-options head
-  its(:table) { should ${1:be} ${0} }
-
 snippet cron_to_s
 options head
   its(:to_s) { should ${1:be} ${0} }
+
+snippet cron_table
+options head
+  its(:table) { should ${1:be} ${0} }
 
 # for default_gateway
 snippet default_gateway_be
 options head
   it { should be(${0:#:object}) }
 
-snippet default_gateway_ipaddress
+snippet default_gateway_to_s
 options head
-  its(:ipaddress) { should ${1:be} ${0} }
+  its(:to_s) { should ${1:be} ${0} }
 
 snippet default_gateway_interface
 options head
   its(:interface) { should ${1:be} ${0} }
 
-snippet default_gateway_to_s
+snippet default_gateway_ipaddress
 options head
-  its(:to_s) { should ${1:be} ${0} }
+  its(:ipaddress) { should ${1:be} ${0} }
 
 # for file
 snippet file_be
@@ -364,9 +370,41 @@ snippet file_exist
 options head
   it { should exist }
 
+snippet file_be_directory
+options head
+  it { should be_directory }
+
+snippet file_be_readable
+options head
+  it { should be_readable.by(${1}).by_user(${2}) }
+
+snippet file_be_writable
+options head
+  it { should be_writable.by(${1}).by_user(${2}) }
+
+snippet file_be_executable
+options head
+  it { should be_executable.by(${1}).by_user(${2}) }
+
 snippet file_be_file
 options head
   it { should be_file }
+
+snippet file_be_pipe
+options head
+  it { should be_pipe }
+
+snippet file_be_symlink
+options head
+  it { should be_symlink }
+
+snippet file_be_socket
+options head
+  it { should be_socket }
+
+snippet file_be_mounted
+options head
+  it { should be_mounted.with(${1}).only_with(${2}) }
 
 snippet file_be_block_device
 options head
@@ -375,22 +413,6 @@ options head
 snippet file_be_character_device
 options head
   it { should be_character_device }
-
-snippet file_be_socket
-options head
-  it { should be_socket }
-
-snippet file_be_directory
-options head
-  it { should be_directory }
-
-snippet file_be_symlink
-options head
-  it { should be_symlink }
-
-snippet file_be_pipe
-options head
-  it { should be_pipe }
 
 snippet file_be_mode
 options head
@@ -408,22 +430,6 @@ snippet file_be_linked_to
 options head
   it { should be_linked_to(${0:#:target}) }
 
-snippet file_be_readable
-options head
-  it { should be_readable.by(${1}).by_user(${2}) }
-
-snippet file_be_writable
-options head
-  it { should be_writable.by(${1}).by_user(${2}) }
-
-snippet file_be_executable
-options head
-  it { should be_executable.by(${1}).by_user(${2}) }
-
-snippet file_be_mounted
-options head
-  it { should be_mounted.with(${1}).only_with(${2}) }
-
 snippet file_be_immutable
 options head
   it { should be_immutable }
@@ -431,6 +437,14 @@ options head
 snippet file_be_version
 options head
   it { should be_version(${0:#:version}) }
+
+snippet file_size
+options head
+  its(:size) { should ${1:be} ${0} }
+
+snippet file_mtime
+options head
+  its(:mtime) { should ${1:be} ${0} }
 
 snippet file_content
 options head
@@ -447,14 +461,6 @@ options head
 snippet file_link_target
 options head
   its(:link_target) { should ${1:be} ${0} }
-
-snippet file_mtime
-options head
-  its(:mtime) { should ${1:be} ${0} }
-
-snippet file_size
-options head
-  its(:size) { should ${1:be} ${0} }
 
 snippet file_selinux_label
 options head
@@ -491,13 +497,13 @@ snippet host_be
 options head
   it { should be(${0:#:object}) }
 
-snippet host_be_resolvable
-options head
-  it { should be_resolvable.by(${1}) }
-
 snippet host_be_reachable
 options head
   it { should be_reachable.with(${1}) }
+
+snippet host_be_resolvable
+options head
+  it { should be_resolvable.by(${1}) }
 
 snippet host_ipaddress
 options head
@@ -528,13 +534,9 @@ snippet iis_website_be_running
 options head
   it { should be_running.under(${1}) }
 
-snippet iis_website_be_in_app_pool
+snippet iis_website_be_has_site_application
 options head
-  it { should be_in_app_pool(${0:#:app_pool}) }
-
-snippet iis_website_be_has_physical_path
-options head
-  it { should be_has_physical_path(${0:#:path}) }
+  it { should be_has_site_application(${0:#:app}, ${1:#:pool}, ${2:#:physical_path}) }
 
 snippet iis_website_be_has_site_bindings
 options head
@@ -544,9 +546,13 @@ snippet iis_website_be_has_virtual_dir
 options head
   it { should be_has_virtual_dir(${0:#:vdir}, ${1:#:path}) }
 
-snippet iis_website_be_has_site_application
+snippet iis_website_be_in_app_pool
 options head
-  it { should be_has_site_application(${0:#:app}, ${1:#:pool}, ${2:#:physical_path}) }
+  it { should be_in_app_pool(${0:#:app_pool}) }
+
+snippet iis_website_be_has_physical_path
+options head
+  it { should be_has_physical_path(${0:#:path}) }
 
 snippet iis_website_to_s
 options head
@@ -756,19 +762,19 @@ options head
 
 snippet port_be_listening
 options head
-  it { should be_listening.with(${1}).on(${2}) }
+  it { should be_listening.on(${1}).with(${2}) }
 
 snippet port_be_valid_ip_address
 options head
   it { should be_valid_ip_address(${0:#:ip_address}) }
 
-snippet port_protocols
-options head
-  its(:protocols) { should ${1:be} ${0} }
-
 snippet port_options
 options head
   its(:options) { should ${1:be} ${0} }
+
+snippet port_protocols
+options head
+  its(:protocols) { should ${1:be} ${0} }
 
 # for ppa
 snippet ppa_be
@@ -792,17 +798,17 @@ snippet process_be_running
 options head
   it { should be_running.under(${1}) }
 
-snippet process_user
+snippet process_count
 options head
-  its(:user) { should ${1:be} ${0} }
+  its(:count) { should ${1:be} ${0} }
 
 snippet process_group
 options head
   its(:group) { should ${1:be} ${0} }
 
-snippet process_count
+snippet process_user
 options head
-  its(:count) { should ${1:be} ${0} }
+  its(:user) { should ${1:be} ${0} }
 
 # for routing_table
 snippet routing_table_be
@@ -822,10 +828,6 @@ snippet selinux_be
 options head
   it { should be(${0:#:object}) }
 
-snippet selinux_be_disabled
-options head
-  it { should be_disabled }
-
 snippet selinux_be_enforcing
 options head
   it { should be_enforcing.with_policy(${1}) }
@@ -833,6 +835,10 @@ options head
 snippet selinux_be_permissive
 options head
   it { should be_permissive.with_policy(${1}) }
+
+snippet selinux_be_disabled
+options head
+  it { should be_disabled }
 
 snippet selinux_to_s
 options head
@@ -864,13 +870,13 @@ snippet service_be_installed
 options head
   it { should be_installed.by(${1}).with_version(${2}) }
 
-snippet service_be_has_start_mode
-options head
-  it { should be_has_start_mode(${0:#:mode}) }
-
 snippet service_be_running
 options head
   it { should be_running.under(${1}) }
+
+snippet service_be_has_start_mode
+options head
+  it { should be_has_start_mode(${0:#:mode}) }
 
 snippet service_be_monitored_by
 options head
@@ -917,6 +923,10 @@ snippet user_be_has_authorized_key
 options head
   it { should be_has_authorized_key(${0:#:key}) }
 
+snippet user_encrypted_password
+options head
+  its(:encrypted_password) { should ${1:be} ${0} }
+
 snippet user_minimum_days_between_password_change
 options head
   its(:minimum_days_between_password_change) { should ${1:be} ${0} }
@@ -924,10 +934,6 @@ options head
 snippet user_maximum_days_between_password_change
 options head
   its(:maximum_days_between_password_change) { should ${1:be} ${0} }
-
-snippet user_encrypted_password
-options head
-  its(:encrypted_password) { should ${1:be} ${0} }
 
 # for yumrepo
 snippet yumrepo_be
@@ -969,13 +975,13 @@ snippet windows_registry_key_exist
 options head
   it { should exist }
 
-snippet windows_registry_key_be_has_property
-options head
-  it { should be_has_property(${0:#:property_name}, ${1:#:property_type}) }
-
 snippet windows_registry_key_be_has_value
 options head
   it { should be_has_value(${0:#:value}) }
+
+snippet windows_registry_key_be_has_property
+options head
+  it { should be_has_property(${0:#:property_name}, ${1:#:property_type}) }
 
 snippet windows_registry_key_be_has_property_value
 options head
@@ -1047,6 +1053,10 @@ snippet x509_certificate_be
 options head
   it { should be(${0:#:object}) }
 
+snippet x509_certificate_be_valid
+options head
+  it { should be_valid }
+
 snippet x509_certificate_be_certificate
 options head
   it { should be_certificate }
@@ -1055,21 +1065,17 @@ snippet x509_certificate_be_has_purpose
 options head
   it { should be_has_purpose(${0:#:p}) }
 
-snippet x509_certificate_be_valid
+snippet x509_certificate_email
 options head
-  it { should be_valid }
-
-snippet x509_certificate_subject
-options head
-  its(:subject) { should ${1:be} ${0} }
+  its(:email) { should ${1:be} ${0} }
 
 snippet x509_certificate_issuer
 options head
   its(:issuer) { should ${1:be} ${0} }
 
-snippet x509_certificate_email
+snippet x509_certificate_subject
 options head
-  its(:email) { should ${1:be} ${0} }
+  its(:subject) { should ${1:be} ${0} }
 
 snippet x509_certificate_fingerprint
 options head
@@ -1120,4 +1126,13 @@ options head
 snippet linux_audit_system_rules
 options head
   its(:rules) { should ${1:be} ${0} }
+
+# for hadoop_config
+snippet hadoop_config_be
+options head
+  it { should be(${0:#:object}) }
+
+snippet hadoop_config_value
+options head
+  its(:value) { should ${1:be} ${0} }
 
