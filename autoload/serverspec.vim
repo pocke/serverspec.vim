@@ -1,3 +1,7 @@
+let s:save_cpo = &cpo
+set cpo&vim
+
+
 let s:ruby_available = exists(':ruby') == 2
 
 if s:ruby_available
@@ -35,3 +39,7 @@ endfunction
 function! serverspec#doc_candidates(ArgLead, CmdLine, CursorPos) abort
   return s:doc_candidates
 endfunction
+
+
+let &cpo = s:save_cpo
+unlet s:save_cpo
