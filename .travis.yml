@@ -1,0 +1,16 @@
+language: ruby
+
+rvm:
+  - 2.0.0
+  - 2.1.8
+  - 2.2.4
+  - 2.3.0
+  - ruby-head
+
+cache: bundler
+bundler_args: --jobs=4 --retry=3 --deployment
+sudo: false
+
+
+script:
+  - bundle exec ruby test/serverspec.vim_test.rb

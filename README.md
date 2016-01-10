@@ -13,6 +13,7 @@ Installation
 - [Shougo/neosnippet.vim](https://github.com/Shougo/neosnippet.vim)
 - [tyru/open-browser.vim](https://github.com/tyru/open-browser.vim)
 - ruby interface (`:help if_ruby`)
+  - support ruby 2.0 or higher.
 
 All dependencies are optional.  
 If you install the above plugins and ruby interface, you can use full functions of `serverspec.vim`.
@@ -76,7 +77,7 @@ Development
 
 ### Requirements
 
-- Ruby 2.0 or later
+- Ruby 2.0 or higher
 - bundler
 - make
 
