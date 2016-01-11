@@ -41,7 +41,7 @@ GEM
     notiffany (0.0.8)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    power_assert (0.2.6)
+    power_assert (0.2.7)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -61,19 +61,19 @@ GEM
     rspec-its (1.2.0)
       rspec-core (>= 3.0.0)
       rspec-expectations (>= 3.0.0)
-    rspec-mocks (3.4.0)
+    rspec-mocks (3.4.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
-    serverspec (2.27.0)
+    serverspec (2.29.0)
       multi_json
       rspec (~> 3.0)
       rspec-its
-      specinfra (~> 2.46)
+      specinfra (~> 2.48)
     sfl (2.2)
     shellany (0.0.1)
     slop (3.6.0)
-    specinfra (2.47.1)
+    specinfra (2.49.0)
       net-scp
       net-ssh (>= 2.7, < 3.1)
       net-telnet
