@@ -446,6 +446,18 @@ snippet file_mtime
 options head
   its(:mtime) { should ${1:be} ${0} }
 
+snippet file_mode
+options head
+  its(:mode) { should ${1:be} ${0} }
+
+snippet file_owner
+options head
+  its(:owner) { should ${1:be} ${0} }
+
+snippet file_group
+options head
+  its(:group) { should ${1:be} ${0} }
+
 snippet file_content
 options head
   its(:content) { should ${1:be} ${0} }
@@ -627,6 +639,10 @@ options head
 snippet interface_speed
 options head
   its(:speed) { should ${1:be} ${0} }
+
+snippet interface_mtu
+options head
+  its(:mtu) { should ${1:be} ${0} }
 
 # for ipfilter
 snippet ipfilter_be
