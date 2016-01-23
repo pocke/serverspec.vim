@@ -69,10 +69,11 @@ or
 :ServerspecDoc <name>
 ```
 
-Blog
+References
 -------
 
-- [Serverspec を書きやすくする Vim プラグインをつくった - pockestrap](http://pocke.hatenablog.com/entry/2015/12/26/113719) (Japanese)
+- [Serverspec を書きやすくする Vim プラグインをつくった - pockestrap](http://pocke.hatenablog.com/entry/2015/12/26/113719) (Japanese blog)
+- [skyarch-networks/serverspec-generator-app](https://github.com/skyarch-networks/serverspec-generator-app) (GUI Application with Electron)
 
 Development
 -----------
