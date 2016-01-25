@@ -31,7 +31,7 @@ GEM
       rb-inotify (>= 0.9)
     lumberjack (1.0.10)
     method_source (0.8.2)
-    minitest (5.8.3)
+    minitest (5.8.4)
     multi_json (1.11.2)
     nenv (0.2.0)
     net-scp (1.2.1)
@@ -73,7 +73,7 @@ GEM
     sfl (2.2)
     shellany (0.0.1)
     slop (3.6.0)
-    specinfra (2.50.1)
+    specinfra (2.50.3)
       net-scp
       net-ssh (>= 2.7, < 3.1)
       net-telnet
