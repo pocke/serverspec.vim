@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (4.2.5)
+    activesupport (4.2.5.1)
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
@@ -53,7 +53,7 @@ GEM
       rspec-core (~> 3.4.0)
       rspec-expectations (~> 3.4.0)
       rspec-mocks (~> 3.4.0)
-    rspec-core (3.4.1)
+    rspec-core (3.4.2)
       rspec-support (~> 3.4.0)
     rspec-expectations (3.4.0)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -73,7 +73,7 @@ GEM
     sfl (2.2)
     shellany (0.0.1)
     slop (3.6.0)
-    specinfra (2.50.3)
+    specinfra (2.50.4)
       net-scp
       net-ssh (>= 2.7, < 3.1)
       net-telnet
