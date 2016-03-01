@@ -540,11 +540,11 @@ options head
 
 snippet iis_website_be_enabled
 options head
-  it { should be_enabled.with_level(${1}) }
+  it { should be_enabled.description(${1}).with_level(${2}) }
 
 snippet iis_website_be_running
 options head
-  it { should be_running.under(${1}) }
+  it { should be_running.description(${1}).under(${2}) }
 
 snippet iis_website_be_has_site_application
 options head
@@ -725,7 +725,7 @@ options head
 
 snippet lxc_be_running
 options head
-  it { should be_running.under(${1}) }
+  it { should be_running.description(${1}).under(${2}) }
 
 snippet lxc_to_s
 options head
@@ -778,7 +778,7 @@ options head
 
 snippet port_be_listening
 options head
-  it { should be_listening.on(${1}).with(${2}) }
+  it { should be_listening.description(${1}).on(${2}).with(${3}) }
 
 snippet port_be_valid_ip_address
 options head
@@ -803,7 +803,7 @@ options head
 
 snippet ppa_be_enabled
 options head
-  it { should be_enabled.with_level(${1}) }
+  it { should be_enabled.description(${1}).with_level(${2}) }
 
 # for process
 snippet process_be
@@ -812,7 +812,7 @@ options head
 
 snippet process_be_running
 options head
-  it { should be_running.under(${1}) }
+  it { should be_running.description(${1}).under(${2}) }
 
 snippet process_count
 options head
@@ -867,7 +867,7 @@ options head
 
 snippet selinux_module_be_enabled
 options head
-  it { should be_enabled.with_level(${1}) }
+  it { should be_enabled.description(${1}).with_level(${2}) }
 
 snippet selinux_module_be_installed
 options head
@@ -880,7 +880,7 @@ options head
 
 snippet service_be_enabled
 options head
-  it { should be_enabled.with_level(${1}) }
+  it { should be_enabled.description(${1}).with_level(${2}) }
 
 snippet service_be_installed
 options head
@@ -888,15 +888,15 @@ options head
 
 snippet service_be_running
 options head
-  it { should be_running.under(${1}) }
+  it { should be_running.description(${1}).under(${2}) }
+
+snippet service_be_monitored_by
+options head
+  it { should be_monitored_by.description(${1}).with_name(${2}) }
 
 snippet service_be_has_start_mode
 options head
   it { should be_has_start_mode(${0:#:mode}) }
-
-snippet service_be_monitored_by
-options head
-  it { should be_monitored_by(${0:#:monitor}) }
 
 snippet service_be_has_property
 options head
@@ -962,7 +962,7 @@ options head
 
 snippet yumrepo_be_enabled
 options head
-  it { should be_enabled.with_level(${1}) }
+  it { should be_enabled.description(${1}).with_level(${2}) }
 
 # for windows_feature
 snippet windows_feature_be
@@ -1058,7 +1058,7 @@ options head
 
 snippet docker_container_be_running
 options head
-  it { should be_running.under(${1}) }
+  it { should be_running.description(${1}).under(${2}) }
 
 snippet docker_container_be_has_volume
 options head
@@ -1133,11 +1133,11 @@ options head
 
 snippet linux_audit_system_be_enabled
 options head
-  it { should be_enabled.with_level(${1}) }
+  it { should be_enabled.description(${1}).with_level(${2}) }
 
 snippet linux_audit_system_be_running
 options head
-  it { should be_running.under(${1}) }
+  it { should be_running.description(${1}).under(${2}) }
 
 snippet linux_audit_system_rules
 options head
