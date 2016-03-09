@@ -756,7 +756,7 @@ options head
 
 snippet package_be_installed
 options head
-  it { should be_installed.by(${1}).with_version(${2}) }
+  it { should be_installed.by(${1}).description(${2}).with_version(${3}) }
 
 snippet package_version
 options head
@@ -871,7 +871,11 @@ options head
 
 snippet selinux_module_be_installed
 options head
-  it { should be_installed.by(${1}).with_version(${2}) }
+  it { should be_installed.by(${1}).description(${2}).with_version(${3}) }
+
+snippet selinux_module_to_s
+options head
+  its(:to_s) { should ${1:be} ${0} }
 
 # for service
 snippet service_be
@@ -884,7 +888,7 @@ options head
 
 snippet service_be_installed
 options head
-  it { should be_installed.by(${1}).with_version(${2}) }
+  it { should be_installed.by(${1}).description(${2}).with_version(${3}) }
 
 snippet service_be_running
 options head
@@ -971,7 +975,7 @@ options head
 
 snippet windows_feature_be_installed
 options head
-  it { should be_installed.by(${1}).with_version(${2}) }
+  it { should be_installed.by(${1}).description(${2}).with_version(${3}) }
 
 # for windows_hot_fix
 snippet windows_hot_fix_be
@@ -980,7 +984,7 @@ options head
 
 snippet windows_hot_fix_be_installed
 options head
-  it { should be_installed.by(${1}).with_version(${2}) }
+  it { should be_installed.by(${1}).description(${2}).with_version(${3}) }
 
 # for windows_registry_key
 snippet windows_registry_key_be
