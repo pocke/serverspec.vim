@@ -636,6 +636,14 @@ snippet interface_be_up
 options head
   it { should be_up }
 
+snippet interface_ipv4_address
+options head
+  its(:ipv4_address) { should ${1:be} ${0} }
+
+snippet interface_ipv6_address
+options head
+  its(:ipv6_address) { should ${1:be} ${0} }
+
 snippet interface_speed
 options head
   its(:speed) { should ${1:be} ${0} }
