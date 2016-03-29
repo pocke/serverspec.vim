@@ -73,7 +73,7 @@ GEM
     sfl (2.2)
     shellany (0.0.1)
     slop (3.6.0)
-    specinfra (2.54.1)
+    specinfra (2.55.0)
       net-scp
       net-ssh (>= 2.7, < 3.1)
       net-telnet
