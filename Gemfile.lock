@@ -36,7 +36,7 @@ GEM
     nenv (0.3.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
-    net-ssh (3.0.2)
+    net-ssh (3.1.1)
     net-telnet (0.1.1)
     notiffany (0.0.8)
       nenv (~> 0.1)
@@ -65,7 +65,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
-    serverspec (2.31.0)
+    serverspec (2.31.1)
       multi_json
       rspec (~> 3.0)
       rspec-its
@@ -73,9 +73,9 @@ GEM
     sfl (2.2)
     shellany (0.0.1)
     slop (3.6.0)
-    specinfra (2.55.0)
+    specinfra (2.56.0)
       net-scp
-      net-ssh (>= 2.7, < 3.1)
+      net-ssh (>= 2.7, < 4.0)
       net-telnet
       sfl
     test-unit (3.1.8)
