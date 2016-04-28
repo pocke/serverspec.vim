@@ -104,6 +104,12 @@ options head
     ${0}
   end
 
+snippet json_file
+options head
+  describe json_file('${1:#:NAME}') do
+    ${0}
+  end
+
 snippet kernel_module
 options head
   describe kernel_module('${1:#:NAME}') do
@@ -269,6 +275,12 @@ options head
 snippet hadoop_config
 options head
   describe hadoop_config('${1:#:NAME}') do
+    ${0}
+  end
+
+snippet php_extension
+options head
+  describe php_extension('${1:#:NAME}') do
     ${0}
   end
 
@@ -703,6 +715,15 @@ options head
 snippet ip6tables_to_s
 options head
   its(:to_s) { should ${1:be} ${0} }
+
+# for json_file
+snippet json_file_be
+options head
+  it { should be(${0:#:object}) }
+
+snippet json_file_content
+options head
+  its(:content) { should ${1:be} ${0} }
 
 # for kernel_module
 snippet kernel_module_be
@@ -1163,4 +1184,13 @@ options head
 snippet hadoop_config_value
 options head
   its(:value) { should ${1:be} ${0} }
+
+# for php_extension
+snippet php_extension_be
+options head
+  it { should be(${0:#:object}) }
+
+snippet php_extension_be_loaded
+options head
+  it { should be_loaded }
 
