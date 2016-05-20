@@ -486,6 +486,10 @@ snippet file_content_as_json
 options head
   its(:content_as_json) { should ${1:be} ${0} }
 
+snippet file_content_as_yaml
+options head
+  its(:content_as_yaml) { should ${1:be} ${0} }
+
 snippet file_link_target
 options head
   its(:link_target) { should ${1:be} ${0} }
