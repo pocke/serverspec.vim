@@ -1150,6 +1150,10 @@ snippet x509_certificate_validity_in_days
 options head
   its(:validity_in_days) { should ${1:be} ${0} }
 
+snippet x509_certificate_subject_alt_names
+options head
+  its(:subject_alt_names) { should ${1:be} ${0} }
+
 # for x509_private_key
 snippet x509_private_key_be
 options head
